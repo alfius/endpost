@@ -1,0 +1,26 @@
+PATH
+  remote: .
+  specs:
+    endpost (0.0.1)
+      rest-client (~> 1.6.7)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    json (1.8.2)
+    mime-types (1.25.1)
+    minitest (5.6.1)
+    rdoc (4.2.0)
+      json (~> 1.4)
+    rest-client (1.6.8)
+      mime-types (~> 1.16)
+      rdoc (>= 2.4.2)
+    vcr (2.9.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  endpost!
+  minitest (~> 5.6.1)
+  vcr (~> 2.9.3)
