@@ -1,0 +1,67 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "post",
+        "uri": "http://www.dial-a-zip.com/XML-Dial-A-ZIP/DAZService.asmx/MethodZIPValidate",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": "input=%0A%20%20%20%20%20%20%3CVERIFYADDRESS%3E%0A%20%20%20%20%20%20%20%20%3CCOMMAND%3EZIP1%3C%2FCOMMAND%3E%0A%20%20%20%20%20%20%20%20%3CSERIALNO%3E123456%3C%2FSERIALNO%3E%0A%20%20%20%20%20%20%20%20%3CUSER%3E123456%3C%2FUSER%3E%0A%20%20%20%20%20%20%20%20%3CPASSWORD%3Ecurrent_password%3C%2FPASSWORD%3E%0A%20%20%20%20%20%20%20%20%3CADDRESS0%3E%3C%2FADDRESS0%3E%0A%20%20%20%20%20%20%20%20%3CADDRESS1%3EDymo%20Endicia%3C%2FADDRESS1%3E%0A%20%20%20%20%20%20%20%20%3CADDRESS2%3E385%20Sherman%20Avenue%20%231%3C%2FADDRESS2%3E%0A%20%20%20%20%20%20%20%20%3CADDRESS3%3EPalo%20Alto%2C%20CA%20%3C%2FADDRESS3%3E%0A%20%20%20%20%20%20%3C%2FVERIFYADDRESS%3E"
+        },
+        "headers": {
+          "Accept": [
+            "*/*; q=0.5, application/xml"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Content-Length": [
+            "634"
+          ],
+          "Content-Type": [
+            "application/x-www-form-urlencoded"
+          ],
+          "User-Agent": [
+            "Ruby"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "headers": {
+          "Date": [
+            "Wed, 13 May 2015 20:28:00 GMT"
+          ],
+          "Server": [
+            "Microsoft-IIS/6.0"
+          ],
+          "X-Powered-By": [
+            "ASP.NET"
+          ],
+          "X-Aspnet-Version": [
+            "2.0.50727"
+          ],
+          "Cache-Control": [
+            "private, max-age=0"
+          ],
+          "Content-Type": [
+            "text/xml; charset=utf-8"
+          ],
+          "Content-Length": [
+            "1231"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<Dial-A-ZIP_Response>\r\n  <User>123456</User>\r\n  <Command>ZIP1</Command>\r\n  <ReturnCode>31</ReturnCode>\r\n  <ZIP5>94306</ZIP5>\r\n  <Plus4>1840</Plus4>\r\n  <CRT>C039</CRT>\r\n  <AddrLine1>385 SHERMAN AVE STE 1</AddrLine1>\r\n  <AddrLine2>DYMO ENDICIA</AddrLine2>\r\n  <AddrLine3>\r\n  </AddrLine3>\r\n  <AddrLineLast>PALO ALTO CA 94306-1840</AddrLineLast>\r\n  <City>PALO ALTO</City>\r\n  <State>CA</State>\r\n  <DPDigits>014</DPDigits>\r\n  <CountyNo>085</CountyNo>\r\n  <LotSEQ>\r\n  </LotSEQ>\r\n  <LotAscend> </LotAscend>\r\n  <CongressDist>18</CongressDist>\r\n  <NumResp>1</NumResp>\r\n  <AddrExists>TRUE</AddrExists>\r\n  <AMSDate>20150415</AMSDate>\r\n  <AMSVersion>2.88.03.N</AMSVersion>\r\n  <RecType>H</RecType>\r\n  <LACSStatus> </LACSStatus>\r\n  <LACSIndicator> </LACSIndicator>\r\n  <LACSReturnCode>\r\n  </LACSReturnCode>\r\n  <HSA>Y</HSA>\r\n  <HSC>N</HSC>\r\n  <DPVFootNote>AABB</DPVFootNote>\r\n  <PRUrban>\r\n  </PRUrban>\r\n  <USPSFirmName>\r\n  </USPSFirmName>\r\n  <CountyName>SANTA CLARA</CountyName>\r\n  <RDI>B</RDI>\r\n  <UPSRural>N</UPSRural>\r\n  <ZIPLookupCount>2765741</ZIPLookupCount>\r\n  <AMSOpenRC>-1</AMSOpenRC>\r\n  <ComputerName>NAPALPRDDAZ03</ComputerName>\r\n  <TimeStamp>5/13/2015 8:28:00 PM</TimeStamp>\r\n</Dial-A-ZIP_Response>"
+        },
+        "http_version": null
+      },
+      "recorded_at": "Wed, 13 May 2015 20:28:00 GMT"
+    }
+  ],
+  "recorded_with": "VCR 2.9.3"
+}

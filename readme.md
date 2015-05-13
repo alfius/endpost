@@ -15,8 +15,14 @@ gem install endpost
 ```ruby
 Endpost.test = true
 Endpost.requester_id = 'lxxx'
+
+# label server credentials
 Endpost.account_id = '1234567'
 Endpost.password = 'current_password'
+
+# dial-a-zip credentials
+Endpost.dial_a_zip_user = '123456'
+Endpost.dial_a_zip_password = 'current_password'
 ```
 
 ### Change the pass phrase
@@ -56,6 +62,25 @@ binary_pdf_label = Base64.decode64(response)
 
 ```ruby
 Endpost.buy_postage(10)
+```
+
+### Verify an address
+
+```ruby
+Endpost.verify_address({
+  :full_name => 'Dymo Endicia',
+  :address => '385 Sherman Avenue #1',
+  :city => 'Palo Alto',
+  :state => 'CA',
+  :zip => '94306',
+})
+# => {
+#  :full_name => 'DYMO ENDICIA',
+#  :address => '385 SHERMAN AVE STE 1',
+#  :city => 'PALO ALTO',
+#  :state => 'CA',
+#  :zip => '94306-1840',
+# }
 ```
 
 ## Contributing
