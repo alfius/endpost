@@ -1,7 +1,7 @@
 Gem::Specification.new do |gem|
   gem.name        = 'endpost'
-  gem.version     = '0.0.1'
-  gem.date        = '2015-05-12'
+  gem.version     = '0.1.0'
+  gem.date        = '2015-05-13'
   gem.summary     = 'A wrapper around Endicia web services.'
   gem.description = 'Allows to generate shipping labels and to perform some of the Endicia basic operations.'
   gem.license     = 'MIT'
