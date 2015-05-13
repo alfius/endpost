@@ -55,7 +55,7 @@ class TestEndpost < Minitest::Test
     VCR.use_cassette(:get_postage_label_success) do
       response = Endpost.get_postage_label({
         :from => {
-          :full_name => 'Alf Test',
+          :full_name => 'Endicia',
           :address => '10B Glenlake Parkway, Suite 300',
           :city => 'Atlanta',
           :state => 'CA',

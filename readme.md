@@ -36,7 +36,7 @@ Endpost.change_pass_phrase('current_password', 'new_password')
 ```ruby
 response = Endpost.get_postage_label({
   :from => {
-    :full_name => 'Alf Test',
+    :full_name => 'Endicia',
     :address => '10B Glenlake Parkway, Suite 300',
     :city => 'Atlanta',
     :state => 'CA',
