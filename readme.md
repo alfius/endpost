@@ -40,14 +40,14 @@ response = Endpost.get_postage_label({
     :address => '10B Glenlake Parkway, Suite 300',
     :city => 'Atlanta',
     :state => 'CA',
-    :zip => '30328',
+    :zipcode => '30328',
   },
   :to => {
     :full_name => 'Harry Whitehouse',
     :address => '247 High Street',
     :city => 'Palo Alto',
     :state => 'CA',
-    :zip => '94301',
+    :zipcode => '94301',
   },
   :weight => 16,
   :mail_class => 'Priority',
@@ -72,14 +72,14 @@ Endpost.verify_address({
   :address => '385 Sherman Avenue #1',
   :city => 'Palo Alto',
   :state => 'CA',
-  :zip => '94306',
+  :zipcode => '94306',
 })
 # => {
 #  :full_name => 'DYMO ENDICIA',
 #  :address => '385 SHERMAN AVE STE 1',
 #  :city => 'PALO ALTO',
 #  :state => 'CA',
-#  :zip => '94306-1840',
+#  :zipcode => '94306-1840',
 # }
 ```
 

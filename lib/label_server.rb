@@ -48,13 +48,13 @@ module LabelServer
         <ToAddress1>#{args[:to][:address]}</ToAddress1>
         <ToCity>#{args[:to][:city]}</ToCity>
         <ToState>#{args[:to][:state]}</ToState>
-        <ToPostalCode>#{args[:to][:zip]}</ToPostalCode>
+        <ToPostalCode>#{args[:to][:zipcode]}</ToPostalCode>
         <ToPhone>#{args[:to][:phone]}</ToPhone>
         <FromName>#{args[:from][:full_name]}</FromName>
         <ReturnAddress1>#{args[:from][:address]}</ReturnAddress1>
         <FromCity>#{args[:from][:city]}</FromCity>
         <FromState>#{args[:from][:state]}</FromState>
-        <FromPostalCode>#{args[:from][:zip]}</FromPostalCode>
+        <FromPostalCode>#{args[:from][:zipcode]}</FromPostalCode>
       </LabelRequest>!
 
     begin

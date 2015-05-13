@@ -45,7 +45,7 @@ module DialAZip
           :address => response_xml.css('Dial-A-ZIP_Response AddrLine1').first.text,
           :city => response_xml.css('Dial-A-ZIP_Response City').first.text,
           :state => response_xml.css('Dial-A-ZIP_Response State').first.text,
-          :zip => [response_xml.css('Dial-A-ZIP_Response ZIP5').first.text, response_xml.css('Dial-A-ZIP_Response Plus4').first.text].join('-'),
+          :zipcode => [response_xml.css('Dial-A-ZIP_Response ZIP5').first.text, response_xml.css('Dial-A-ZIP_Response Plus4').first.text].join('-'),
         }
       else
         fail DIAL_A_ZIP_RESPONSE_MESSAGES[return_code]

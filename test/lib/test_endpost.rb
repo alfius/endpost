@@ -59,14 +59,14 @@ class TestEndpost < Minitest::Test
           :address => '10B Glenlake Parkway, Suite 300',
           :city => 'Atlanta',
           :state => 'CA',
-          :zip => '30328',
+          :zipcode => '30328',
         },
         :to => {
           :full_name => 'Harry Whitehouse',
           :address => '247 High Street',
           :city => 'Palo Alto',
           :state => 'CA',
-          :zip => '94301',
+          :zipcode => '94301',
         },
         :weight => 16,
         :mail_class => 'Priority',
@@ -83,10 +83,10 @@ class TestEndpost < Minitest::Test
       begin
         response = Endpost.get_postage_label({
           :from => {
-            :zip => '30328',
+            :zipcode => '30328',
           },
           :to => {
-            :zip => '94301',
+            :zipcode => '94301',
           },
           :weight => 16,
           :mail_class => 'Priority',
@@ -169,14 +169,14 @@ class TestEndpost < Minitest::Test
         :address => '385 Sherman Avenue #1',
         :city => 'Palo Alto',
         :state => 'CA',
-        :zip => '94306',
+        :zipcode => '94306',
       })
 
       assert_equal 'DYMO ENDICIA', normalized_address[:full_name]
       assert_equal '385 SHERMAN AVE STE 1', normalized_address[:address]
       assert_equal 'PALO ALTO', normalized_address[:city]
       assert_equal 'CA', normalized_address[:state]
-      assert_equal '94306-1840', normalized_address[:zip]
+      assert_equal '94306-1840', normalized_address[:zipcode]
     end
   end
 
@@ -188,7 +188,7 @@ class TestEndpost < Minitest::Test
           :address => '385 Sherman Avenue',
           :city => 'Palo Alto',
           :state => 'CA',
-          :zip => '94306',
+          :zipcode => '94306',
         })
       rescue => e
         assert_match /More information, such as an apartment or suite number, may give a more specific address/, e.to_s
