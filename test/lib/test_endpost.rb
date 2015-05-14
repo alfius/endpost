@@ -74,7 +74,8 @@ class TestEndpost < Minitest::Test
         :sort_type => 'SinglePiece',
       })
 
-      refute_empty Base64.decode64(response)
+      refute_empty response[:label]
+      refute_empty response[:tracking_number]
     end
   end
 

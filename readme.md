@@ -54,9 +54,13 @@ response = Endpost.get_postage_label({
   :mailpiece_shape => 'Parcel',
   :sort_type => 'SinglePiece',
 })
-
-binary_pdf_label = Base64.decode64(response)
+# => {
+#   :label => "%PDF-1.4\n%\xE2\xE3\xC...",
+#   :tracking_number => "9499907123456123456781"
+# }
 ```
+
+The label can be saved directly to a file using the `.pdf` extension.
 
 ### Buy postage
 

@@ -1,3 +1,5 @@
+require 'base64'
+
 module LabelServer
   LABEL_SERVER_BASE_URL = 'https://elstestserver.endicia.com/LabelService/EwsLabelService.asmx'
 
@@ -71,7 +73,12 @@ module LabelServer
       end
 
       label_node_xml = response_xml.css('LabelRequestResponse Base64LabelImage').first
-      return label_node_xml.text
+      tracking_number_node_xml = response_xml.css('LabelRequestResponse TrackingNumber').first
+
+      return {
+        :label => Base64.decode64(label_node_xml.text),
+        :tracking_number => tracking_number_node_xml.text
+      }
 
     rescue => e
       fail e.to_s
