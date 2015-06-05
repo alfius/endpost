@@ -1,9 +1,14 @@
 require 'base64'
 
 module LabelServer
-  LABEL_SERVER_BASE_URL = 'https://elstestserver.endicia.com/LabelService/EwsLabelService.asmx'
+  SANDBOX_BASE_URL = 'https://elstestserver.endicia.com/LabelService/EwsLabelService.asmx'
+  PRODUCTION_BASE_URL = 'https://labelserver.endicia.com/LabelService/EwsLabelService.asmx'
 
   attr_accessor :test, :requester_id, :account_id, :password
+
+  def base_url
+    test ? SANDBOX_BASE_URL : PRODUCTION_BASE_URL
+  end
 
   def change_pass_phrase(old_password, new_password)
     xml = %!
@@ -17,7 +22,7 @@ module LabelServer
         <NewPassPhrase>#{new_password}</NewPassPhrase>
       </ChangePassPhraseRequest>!
 
-    response = RestClient.post "#{LABEL_SERVER_BASE_URL}/ChangePassPhraseXML", :changePassPhraseRequestXML => xml
+    response = RestClient.post "#{base_url}/ChangePassPhraseXML", :changePassPhraseRequestXML => xml
 
     response_xml = Nokogiri::XML(response.body)
     status_node_xml = response_xml.css('ChangePassPhraseRequestResponse Status').first
@@ -60,7 +65,7 @@ module LabelServer
       </LabelRequest>!
 
     begin
-      response = RestClient.post "#{LABEL_SERVER_BASE_URL}/GetPostageLabelXML", :labelRequestXML => xml
+      response = RestClient.post "#{base_url}/GetPostageLabelXML", :labelRequestXML => xml
 
       response_xml = Nokogiri::XML(response.body)
       status_node_xml = response_xml.css('LabelRequestResponse Status').first
@@ -98,7 +103,7 @@ module LabelServer
     </RecreditRequest>!
 
     begin
-      response = RestClient.post "#{LABEL_SERVER_BASE_URL}/BuyPostageXML", :recreditRequestXML => xml
+      response = RestClient.post "#{base_url}/BuyPostageXML", :recreditRequestXML => xml
 
       response_xml = Nokogiri::XML(response.body)
       status_node_xml = response_xml.css('RecreditRequestResponse Status').first
