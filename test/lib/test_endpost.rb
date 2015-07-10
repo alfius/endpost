@@ -79,6 +79,34 @@ class TestEndpost < Minitest::Test
     end
   end
 
+  def test_get_postage_label_extended_zip_code
+    VCR.use_cassette(:get_postage_label_extended_zip_code) do
+      response = Endpost.get_postage_label({
+        :from => {
+          :full_name => 'CVS',
+          :address => '872 N Delaware st',
+          :city => 'San Mateo',
+          :state => 'CA',
+          :zipcode => '94401-1504',
+        },
+        :to => {
+          :full_name => 'The New York Times Back Copy Department',
+          :address => 'P.O. Box 8041',
+          :city => 'Davenport',
+          :state => 'IA',
+          :zipcode => '52808-8041',
+        },
+        :weight => 16,
+        :mail_class => 'Priority',
+        :mailpiece_shape => 'Parcel',
+        :sort_type => 'SinglePiece',
+      })
+
+      refute_empty response[:label]
+      refute_empty response[:tracking_number]
+    end
+  end
+
   def test_get_postage_label_error
     VCR.use_cassette(:get_postage_label_error) do
       begin
