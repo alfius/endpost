@@ -214,13 +214,13 @@ class TestEndpost < Minitest::Test
       begin
         Endpost.verify_address({
           :full_name => 'Dymo Endicia',
-          :address => '385 Sherman Avenue',
+          :address => '100 Fake Avenue',
           :city => 'Palo Alto',
           :state => 'CA',
           :zipcode => '94306',
         })
       rescue => e
-        assert_match /More information, such as an apartment or suite number, may give a more specific address/, e.to_s
+        assert_match /The Street address is invalid/, e.to_s
         return
       end
 

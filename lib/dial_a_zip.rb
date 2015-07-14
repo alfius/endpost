@@ -13,6 +13,8 @@ module DialAZip
     '32' => 'More information, such as an apartment or suite number, may give a more specific address.',
   }
 
+  DIAL_A_ZIP_ADDRESS_NOT_FOUND_MESSAGE = 'The address as submitted could not be found'
+
   attr_accessor :dial_a_zip_user, :dial_a_zip_password
 
   def verify_address(address)
@@ -39,7 +41,7 @@ module DialAZip
       addr_exists_node_xml = response_xml.css('Dial-A-ZIP_Response AddrExists').first
       addr_exists = addr_exists_node_xml ? addr_exists_node_xml.text : nil
 
-      if return_code == '31' && addr_exists == 'TRUE'
+      if ['31', '32'].include?(return_code) && addr_exists == 'TRUE'
         return {
           :full_name => response_xml.css('Dial-A-ZIP_Response AddrLine2').first.text,
           :address => response_xml.css('Dial-A-ZIP_Response AddrLine1').first.text,
@@ -48,7 +50,7 @@ module DialAZip
           :zipcode => [response_xml.css('Dial-A-ZIP_Response ZIP5').first.text, response_xml.css('Dial-A-ZIP_Response Plus4').first.text].join('-'),
         }
       else
-        fail DIAL_A_ZIP_RESPONSE_MESSAGES[return_code]
+        fail return_code == '31' ? DIAL_A_ZIP_ADDRESS_NOT_FOUND_MESSAGE : DIAL_A_ZIP_RESPONSE_MESSAGES[return_code]
       end
 
     rescue => e
