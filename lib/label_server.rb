@@ -121,4 +121,38 @@ module LabelServer
       fail e.to_s
     end
   end
+
+  def get_refund(tracking_number)
+    xml = %!
+    <RefundRequest>
+      <RequesterID>#{requester_id}</RequesterID>
+      <RequestID>0</RequestID>
+      <CertifiedIntermediary>
+        <AccountID>#{account_id}</AccountID>
+        <PassPhrase>#{password}</PassPhrase>
+      </CertifiedIntermediary>
+      <PicNumbers>
+        <PicNumber>#{tracking_number}</PicNumber>
+      </PicNumbers>
+    </RefundRequest>!
+
+    begin
+      response = RestClient.post "#{base_url}/GetRefundXML", :refundRequestXML => xml
+
+      response_xml = Nokogiri::XML(response.body)
+      status_node_xml = response_xml.css('RefundResponse RefundStatus').first
+
+      case status_node_xml.text
+      when 'Approved'
+        return true
+      when 'DeniedInvalid'
+        fail response_xml.css('RefundResponse RefundStatusMessage').first.text
+      else
+        fail 'Unknown status code'
+      end
+
+    rescue => e
+      fail e.to_s
+    end
+  end
 end

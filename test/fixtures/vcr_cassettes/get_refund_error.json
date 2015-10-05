@@ -1,0 +1,73 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "post",
+        "uri": "https://elstestserver.endicia.com/LabelService/EwsLabelService.asmx/GetRefundXML",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": "refundRequestXML=%0A%20%20%20%20%3CRefundRequest%3E%0A%20%20%20%20%20%20%3CRequesterID%3Elxxx%3C%2FRequesterID%3E%0A%20%20%20%20%20%20%3CRequestID%3E0%3C%2FRequestID%3E%0A%20%20%20%20%20%20%3CCertifiedIntermediary%3E%0A%20%20%20%20%20%20%20%20%3CAccountID%3E1234567%3C%2FAccountID%3E%0A%20%20%20%20%20%20%20%20%3CPassPhrase%3Ecurrent_password%3C%2FPassPhrase%3E%0A%20%20%20%20%20%20%3C%2FCertifiedIntermediary%3E%0A%20%20%20%20%20%20%3CPicNumbers%3E%0A%20%20%20%20%20%20%20%20%3CPicNumber%3E9499907123456123456781%3C%2FPicNumber%3E%0A%20%20%20%20%20%20%3C%2FPicNumbers%3E%0A%20%20%20%20%3C%2FRefundRequest%3E"
+        },
+        "headers": {
+          "Accept": [
+            "*/*; q=0.5, application/xml"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Content-Length": [
+            "607"
+          ],
+          "Content-Type": [
+            "application/x-www-form-urlencoded"
+          ],
+          "User-Agent": [
+            "Ruby"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "headers": {
+          "Cache-Control": [
+            "private, max-age=0"
+          ],
+          "Content-Type": [
+            "text/xml; charset=utf-8"
+          ],
+          "Content-Encoding": [
+            "text/xml; charset=utf-8"
+          ],
+          "Vary": [
+            "Accept-Encoding"
+          ],
+          "Server": [
+            "Microsoft-IIS/7.5"
+          ],
+          "X-Aspnet-Version": [
+            "4.0.30319"
+          ],
+          "X-Powered-By": [
+            "ASP.NET"
+          ],
+          "Date": [
+            "Mon, 05 Oct 2015 20:12:30 GMT"
+          ],
+          "Content-Length": [
+            "467"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "<?xml version=\"1.0\" encoding=\"utf-8\"?><RefundResponse xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"www.envmgr.com/LabelService\"><RequesterID>lxxx</RequesterID><RequestID>0</RequestID><Refund PicNumber=\"9499907123456123456781\" TransactionId=\"0\" PieceNumber=\"0\"><RefundStatus>DeniedInvalid</RefundStatus><RefundStatusMessage>RC INVALID_REFUND_RECORD due to missing tracking record or mismatching associated data</RefundStatusMessage></Refund><FormId>0</FormId></RefundResponse>"
+        },
+        "http_version": null
+      },
+      "recorded_at": "Mon, 05 Oct 2015 20:12:32 GMT"
+    }
+  ],
+  "recorded_with": "VCR 2.9.3"
+}

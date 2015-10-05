@@ -191,6 +191,43 @@ class TestEndpost < Minitest::Test
     flunk
   end
 
+  def test_get_refund_success
+    VCR.use_cassette(:get_refund_success) do
+      assert Endpost.get_refund('9499907123456123456782')
+    end
+  end
+
+  def test_get_refund_error
+    VCR.use_cassette(:get_refund_error) do
+      begin
+        Endpost.get_refund('9499907123456123456781')
+      rescue => e
+        assert_match /RC INVALID_REFUND_RECORD due to missing tracking record or mismatching associated data/, e.to_s
+        return
+      end
+
+      flunk
+    end
+  end
+
+  def test_get_refund_connection_error
+    mock_error = Minitest::Mock.new
+    mock_error.expect(:call, nil) do |args|
+      fail 'getaddrinfo: Temporary failure in name resolution'
+    end
+
+    begin
+      RestClient.stub(:post, mock_error) do
+        Endpost.get_refund('')
+      end
+    rescue => e
+      assert_match /getaddrinfo: Temporary failure in name resolution/, e.to_s
+      return
+    end
+
+    flunk
+  end
+
   def test_verify_address_success
     VCR.use_cassette(:verify_address_success) do
       normalized_address = Endpost.verify_address({
